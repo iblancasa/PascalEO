@@ -1,38 +1,35 @@
-program PascalEO;
+uses
+    Crt{para ClrScr},
+    Dos{para GetTime};
 
 type
   darray = array of boolean;
   dmatrix = array of darray;
 
-var
-  chromosome1:darray;
-  chromosome2:darray;
-  size:integer;
-  i: integer;
-  xover:dmatrix;
 
-  function draw(chromosome:darray):Integer;
-    var
-      size:Integer;
+function draw(chromosome:darray):longint;
+  var
+    size:longint;
+    i:longint;
+  begin
+    size:=length(chromosome);
 
-    begin
-      size:=length(chromosome);
-
-      for i:=0 to size-1 do
-        begin
-          if chromosome[i] then
-            write(1)
-          else
-            write(0);
-        end;
-      writeln();
-    end;
+    for i:=0 to size-1 do
+      begin
+        if chromosome[i] then
+          write(1)
+        else
+          write(0);
+      end;
+    writeln();
+    exit(0);
+  end;
 
 
-function random_chromosome(size: integer):darray;
+function random_chromosome(size: longint):darray;
   var
     chromosome: darray;
-    i:integer;
+    i:longint;
   begin
     setlength(chromosome,size);
     for i:=0 to size-1 do
@@ -43,11 +40,11 @@ function random_chromosome(size: integer):darray;
   end;
 
 
-function compute_fitness(var chromosome : darray):integer;
+function compute_fitness(var chromosome : darray):longint;
   Var
-  i:Integer;
-  size: Integer;
-  count: Integer;
+  i:longint;
+  size: longint;
+  count: longint;
 
   begin
     count:=0;
@@ -66,8 +63,8 @@ function compute_fitness(var chromosome : darray):integer;
 
 function mutate1(var chromosome:darray):darray;
   Var
-    mutation_point:Integer;
-    size:Integer;
+    mutation_point:longint;
+    size:longint;
     new_chrom:darray;
 
   begin
@@ -81,37 +78,37 @@ function mutate1(var chromosome:darray):darray;
 
 function crossover(var chrom1,chrom2: darray):dmatrix;
   var
-    size:Integer;
-    xover_point:Integer;
-    scope:Integer;
-    k:Integer;
-    result:dmatrix;
+    size:longint;
+    xover_point:longint;
+    scope:longint;
+    k:longint;
+    matrixresult:dmatrix;
 
   begin
     size:=length(chrom1);
     xover_point:=random(size-1);
     scope:= 1+random(size-xover_point-1);
 
-    setlength(result,2);
-    setlength(result[0],size);
-    setlength(result[1],size);
+    setlength(matrixresult,2);
+    setlength(matrixresult[0],size);
+    setlength(matrixresult[1],size);
 
     for k:=0 to xover_point-1 do
       begin
-        result[0][k]:=chrom1[k];
-        result[1][k]:=chrom2[k];
+        matrixresult[0][k]:=chrom1[k];
+        matrixresult[1][k]:=chrom2[k];
       end;
 
       for k:=xover_point to xover_point+scope-1 do
         begin
-          result[0][k]:=chrom2[k];
-          result[1][k]:=chrom1[k];
+          matrixresult[0][k]:=chrom2[k];
+          matrixresult[1][k]:=chrom1[k];
         end;
 
       for k:=xover_point+scope to size-1 do
         begin
-          result[0][k]:=chrom1[k];
-          result[1][k]:=chrom2[k];
+          matrixresult[0][k]:=chrom1[k];
+          matrixresult[1][k]:=chrom2[k];
         end;
-      exit(result);
+      exit(matrixresult);
   end;
