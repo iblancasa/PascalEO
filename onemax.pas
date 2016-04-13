@@ -41,7 +41,7 @@ begin
   while tama<top_length do
     begin
       measured_time:=calcule_time(iterations,tama);
-      write('Pascal-Onemax-BitVector ', tama);
+      write('Pascal-BitVector ', tama);
       writeln(' ', measured_time:2:2);
       tama:=tama*2;
     end;
