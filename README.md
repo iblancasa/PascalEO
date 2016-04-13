@@ -4,7 +4,11 @@ The same as [Pythoneo](https://github.com/iblancasa/PythonEO), [Luneo](https://g
 
 
 ### What do you need to run this?
-You will need to install Pascal (in Linux the package is named fpc).
+You will need to install Free Pascal (in Linux the package is named fpc).
+
+```
+sudo apt-get install fpc
+```
 
 Then:
 ```bash
