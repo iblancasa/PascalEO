@@ -22,7 +22,7 @@ function calcule_time(var chromosome:darray; number:longint):real;
 
     for i:=0 to number do
       begin
-        compute_fitness(chromosome);
+        mutate1(chromosome);
       end;
 
       GetTime(h,m,s,c);
