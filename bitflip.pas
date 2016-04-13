@@ -42,7 +42,7 @@ begin
     begin
       chromosome:=random_chromosome(tama);
       measured_time:=calcule_time(chromosome, iterations);
-      write('Pascal-Bitflip-BitVector ', tama);
+      write('Pascal-BitVector ', tama);
       writeln(' ', measured_time:2:2);
       tama:=tama*2;
     end;

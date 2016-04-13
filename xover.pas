@@ -41,7 +41,7 @@ begin
       chromosome1:=random_chromosome(tama);
       chromosome2:=random_chromosome(tama);
       measured_time:=calcule_time(chromosome1, chromosome2, iterations);
-      write('Pascal-XOver-BitVector ', tama);
+      write('Pascal-BitVector ', tama);
       writeln(' ', measured_time:2:2);
       tama:=tama*2;
     end;
